@@ -1,27 +1,31 @@
-# TestSimpleLoginForm
+### Goal:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+check experience how candidate can kickstart new project (project structure, tooling etc), check knowledge of different RX Operators.
 
-## Development server
+### Task
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Please build a signup form, with fields below:
 
-## Code scaffolding
+- email text input
+- password text input
+- confirm password text input
+- signup button
+- reset button
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Where:
 
-## Build
+- email: is a required field, validated to have a value, to pass regexp.
+- password: is a required file, minimum length 6
+- confirm password: should be equal to password
+- signup button: enabled of form is touched, and all validations above passed
+- reset button: disabled if nothing to reset, if form has some data — resets it to clear state.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+If some validation is not passed, we need to make a highlight with error description near field with an error. For network and other common errors we can show some common error field in a bottom of the form.
 
-## Running unit tests
+There is no need to use any styling, if you want, you can add some picocss, but anyway - styling is not a goal of that task.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Gotchas
 
-## Running end-to-end tests
+The form should be done as a one, big Rx stream. Like fromEvent , combine events from a few inputs, and then combine them into a new stream, which will go further if all conditions passed, and in the end we should add side effect that will enable signup button. And in a case when all works—send data to server on signup button click.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+If you don't know how to implement some tasks using RxJS, implement them without Rx. In the end we still need working form with completed business logic and well grained structure of the project.
